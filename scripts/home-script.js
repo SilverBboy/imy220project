@@ -29,11 +29,16 @@ const getArticles = (id) => {
         url: `api.php?id=${id}`,
         type: 'GET',
     }).then((result) => {
+<<<<<<< HEAD
+=======
+        // console.log(JSON.parse(result))
+>>>>>>> 4fcc975cb76eaf39348cff3321ce87cf4180d222
         articles = JSON.parse(result);
         return JSON.parse(result);
     })
 }
 
+<<<<<<< HEAD
 const showImagePreview = (input) => {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
@@ -45,6 +50,10 @@ const showImagePreview = (input) => {
 }
 
 const displayArticles = (articles) => {
+=======
+const displayArticles = (articles) => {
+    // console.log()
+>>>>>>> 4fcc975cb76eaf39348cff3321ce87cf4180d222
     const articlesContainer = $("<div>").addClass("container-fluid")
     
     $("#articles-container").append(articlesContainer);
@@ -67,7 +76,11 @@ const displayArticles = (articles) => {
                     $("<div>").addClass("").html((pubDate))
                 ),
                 $("<div>").addClass("card-body d-flex flex-column").append(
+<<<<<<< HEAD
                     $("<img>").addClass("card-img-top").attr("src", article.imageUrl).attr("alt", "Article Image"),
+=======
+                    //add image here. Must be able to upload on click
+>>>>>>> 4fcc975cb76eaf39348cff3321ce87cf4180d222
                     $("<p>").addClass("card-text").html(article.summary)
                     //add a divider line here
                     //add hashtags here
@@ -83,7 +96,10 @@ const displayArticles = (articles) => {
     // )
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4fcc975cb76eaf39348cff3321ce87cf4180d222
 $(() => {
 
     $("#article-content").on("input", function () {
@@ -107,6 +123,7 @@ $(() => {
             displayArticles(data);
         })
     })
+<<<<<<< HEAD
 
 
     $("#article-image").change(function () {
@@ -141,4 +158,6 @@ $(() => {
         showImagePreview($("#article-image")[0]);
     });
 
+=======
+>>>>>>> 4fcc975cb76eaf39348cff3321ce87cf4180d222
 });
