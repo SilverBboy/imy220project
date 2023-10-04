@@ -1,0 +1,150 @@
+html{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+
+}
+
+.profile-bg{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+}
+
+
+.logo{
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.logo img{
+    width: 100%;
+}
+
+.profile{
+    display: flex;
+    justify-content: center;
+    flex:0;
+    width: 100%;
+
+}
+
+.profile div{
+    max-width: 200px;
+    max-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-image: linear-gradient(to bottom right, #f000a0, #800020);
+    border: 1px solid #d00070;
+    margin: 40px 0 40px 0;
+}
+.profile img{
+    width: 100%;
+}
+
+.profile-details{
+    flex: 1;
+    /* background-color: #d00070; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 0 0 40px;
+
+}
+.abc{
+    width: 100%;
+}
+.add-btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100px;
+    margin: 20px;
+}
+
+#article-form-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: none;
+    /* Start with display: none; */
+}
+
+#article-form-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* Ensure the content takes the full height of the container */
+}
+
+#article-form-container div{
+    /* display: block; */
+    /* max-height: 300px; */
+}
+#article-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* max-height: 300px; */
+    /* background-color: #d00070; */
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+
+.triangle {
+    clip-path: polygon(50% 0%, 0% 25%, 100% 25%);
+    background-color: #d00070;
+}
+.no-pad{
+    padding: 0 0 0 0 !important;
+    height: 100vh;
+}
+
+.no-shadow{
+    box-shadow: none !important;
+}
+
+.shadow-to-left{
+    box-shadow: -3px 0px 20px 0px #d00070;
+}
+
+.shadow-to-right{
+    box-shadow: 3px 0px 20px 0px #d00070;
+    display: flex;
+    flex-direction: column;
+}
+
+#article-content{
+    min-height: 50px;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: none;
+}
+
+.article-tags{
+    /* height: 10px; */
+    /* padding: 10px; */
+    font-size: 16px;
+    /* line-height: 1.5; */
+    resize: none;
+}
