@@ -14,7 +14,6 @@
 	$result = mysqli_query($conn, $sql_query);
 	$row = mysqli_fetch_array($result);
 
-<<<<<<< HEAD
 	// if(isset($_POST["upload"])){
 	// 	echo ($_POST["title"] . $_POST["description"] . $_POST["content"] . $_POST["tags"]);
 	// 	$userid = mysqli_real_escape_string($conn, $_SESSION["id"]);
@@ -24,17 +23,6 @@
 	// 	$tags = mysqli_real_escape_string($conn, $_POST["tags"]);
 	// 	postArticle($userid, $title, $description, $content, $tags);
 	// }
-=======
-	if(isset($_POST["upload"])){
-		echo ($_POST["title"] . $_POST["description"] . $_POST["content"] . $_POST["tags"]);
-		$userid = mysqli_real_escape_string($conn, $_SESSION["id"]);
-		$title = mysqli_real_escape_string($conn, $_POST["title"]);
-		$description = mysqli_real_escape_string($conn, $_POST["description"]);
-		$content = mysqli_real_escape_string($conn, $_POST["content"]);
-		$tags = mysqli_real_escape_string($conn, $_POST["tags"]);
-		postArticle($userid, $title, $description, $content, $tags);
-	}
->>>>>>> 4fcc975cb76eaf39348cff3321ce87cf4180d222
 
 ?>
 
@@ -130,11 +118,7 @@
 						<div class="h5" id="close-form"><i class="lni lni-close"></i></div>
 					</div>
 					<div class="card-body">
-<<<<<<< HEAD
 						<form id="article-form" method="POST" action="home.php" enctype="multipart/form-data">
-=======
-						<form id="article-form" method="POST" action="home.php">
->>>>>>> 4fcc975cb76eaf39348cff3321ce87cf4180d222
 							<div class="row">
 								<div class="col-12">
 									<div class="form-group mb-3">
@@ -150,7 +134,6 @@
 								</div>
 								<div class="col-12">
 									<div class="form-group mb-3">
-<<<<<<< HEAD
 										<label class="form-label text-muted" for="article-image">Upload Image</label>
 										<div class="custom-file">
 											<input type="file" class="custom-file-input" id="article-image" name="article-image" accept="image/*">
@@ -162,8 +145,6 @@
 								</div>
 								<div class="col-12">
 									<div class="form-group mb-3">
-=======
->>>>>>> 4fcc975cb76eaf39348cff3321ce87cf4180d222
 										<label class="form-label text-muted" for="article-content">Article</label>
 										<textarea class="col-12" id="article-content" name="content" rows="3"></textarea>
 									</div>

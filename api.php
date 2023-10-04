@@ -2,12 +2,8 @@
 require_once 'db.php';
 
     session_start();
-<<<<<<< HEAD
     $conn = DB::getDbConn();
     
-=======
-
->>>>>>> 4fcc975cb76eaf39348cff3321ce87cf4180d222
 
 function getSessionUID(){
     return json_encode($_SESSION["id"]);
@@ -46,7 +42,6 @@ if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["getID"])){
 
 if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])){
     $userid = $_GET["id"];
-<<<<<<< HEAD
     $articles = getArticles($userid);
     echo $articles;
 }
@@ -65,17 +60,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["upload"])){
     $tags = mysqli_real_escape_string($conn, $_POST["tags"]);
     postArticle($userid, $title, $description, $content, $tags);
 }
-=======
-    // echo $userid;
-    // $userid = (int)$_GET["id"];
-    // echo $userid;
-    $articles = getArticles($userid);
-    echo $articles;
-}//else {
-//     // header('HTTP/1.1 400 Bad Request');
-//     echo json_encode(['error' => 'Invalid request']);
-// }
->>>>>>> 4fcc975cb76eaf39348cff3321ce87cf4180d222
 
 
 ?>
