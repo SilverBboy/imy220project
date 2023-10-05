@@ -137,6 +137,10 @@ body{
     margin: 0 0 0 0;
 }
 
+.article-card{
+    height: 100%;
+}
+
 .no-pad{
     padding: 0 0 0 0 !important;
     height: 100vh;

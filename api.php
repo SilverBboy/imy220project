@@ -23,10 +23,10 @@ function getArticles($userid) {
 }
 
 
-function postArticle($userid, $title, $description, $content, $tags){
+function postArticle($userid, $title, $image, $description, $content, $tags){
     $conn = DB::getDbConn();
 
-    $sql_query = "INSERT INTO articles (userid, title, image, summary, hashtags) VALUES('$userid', '$title', '', '$description', '$tags')";
+    $sql_query = "INSERT INTO articles (userid, title, image, summary, hashtags) VALUES('$userid', '$title', '$image', '$description', '$tags')";
     $result = mysqli_query($conn, $sql_query);
 
     if ($result) {
@@ -47,18 +47,22 @@ if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])){
 }
 
 if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["upload"])){
-
-    $mediaDir = "media/gallery/";
-    $uploadFile = $mediaDir . basename($_FILES["article-image"]["name"]);
+    $mediaDir = "./media/gallery/";
+    $filename = basename($_FILES["article-image"]["tmp_name"]);
+    $uploadFile = $mediaDir . $filename;
     // echo $uploadFile;
+    if(move_uploaded_file($_FILES["article-image"]["tmp_name"], $uploadFile)){
 
-    // echo ($_POST["title"] . $_POST["description"] . $_POST["content"] . $_POST["tags"]);
-    $userid = mysqli_real_escape_string($conn, $_SESSION["id"]);
-    $title = mysqli_real_escape_string($conn, $_POST["title"]);
-    $description = mysqli_real_escape_string($conn, $_POST["description"]);
-    $content = mysqli_real_escape_string($conn, $_POST["content"]);
-    $tags = mysqli_real_escape_string($conn, $_POST["tags"]);
-    postArticle($userid, $title, $description, $content, $tags);
+        $userid = mysqli_real_escape_string($conn, $_SESSION["id"]);
+        $title = mysqli_real_escape_string($conn, $_POST["title"]);
+        $description = mysqli_real_escape_string($conn, $_POST["description"]);
+        $content = mysqli_real_escape_string($conn, $_POST["content"]);
+        $tags = mysqli_real_escape_string($conn, $_POST["tags"]);
+        postArticle($userid, $title, $filename, $description, $content, $tags);
+
+    } else {
+        echo "Error moving uploaded file to destination.";
+    }
 }
 
 

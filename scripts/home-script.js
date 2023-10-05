@@ -54,23 +54,22 @@ const displayArticles = (articles) => {
     articlesContainer.append(row)
     
     articles.forEach(article => {
-        // console.log(article);
+        console.log(article);
         let pubDate = new Date(article.date)
-        pubDate = pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).replace(/\//g, '-');;
+        let articleImage = "./media/gallery/" + article.image
+        pubDate = "On " + pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).replace(/\//g, '-');;
         console.log(pubDate)
 
         const card = $("<div>").addClass("col-xl-4 col-lg-6 mb-3")
         card.append(
-            $("<div>").addClass("card").append(
-                $("<div>").addClass("card-header d-flex justify-content-between").append(
+            $("<div>").addClass("card article-card").append(
+                $("<div>").addClass("card-header").append(
                     $("<div>").addClass("h5").html(article.title),
-                    $("<div>").addClass("").html((pubDate))
+                    $("<div>").addClass("font-weight-bold small").html((pubDate))
                 ),
                 $("<div>").addClass("card-body d-flex flex-column").append(
-                    $("<img>").addClass("card-img-top").attr("src", article.imageUrl).attr("alt", "Article Image"),
+                    $("<img>").addClass("card-img-top").attr("src", articleImage).attr("alt", "Article Image"),
                     $("<p>").addClass("card-text").html(article.summary)
-                    //add a divider line here
-                    //add hashtags here
                 )
             )
         );
@@ -78,9 +77,6 @@ const displayArticles = (articles) => {
         row.append(card);
     });
 
-    // $("#articles-container").append(
-    //     articlesContainer
-    // )
 }
 
 
