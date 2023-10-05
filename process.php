@@ -4,7 +4,6 @@
     ini_set('display_errors', 1);
     error_reporting(E_ALL); 
 
-    // $mysqli = mysqli_connect($host, $uname, $pass, $db_name);
     
     $conn = DB::getDbConn();
 
@@ -12,9 +11,7 @@
     if(isset($_POST['login'])){
         $email = $_POST['email'];
         $password = $_POST['password'];
-        //connect to database, get confirmation if user is connected.
-        //if connected: go to home page
-        //else show error message.
+
 
         $sql_query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
         $result = mysqli_query($conn, $sql_query);

@@ -14,16 +14,6 @@
 	$result = mysqli_query($conn, $sql_query);
 	$row = mysqli_fetch_array($result);
 
-	// if(isset($_POST["upload"])){
-	// 	echo ($_POST["title"] . $_POST["description"] . $_POST["content"] . $_POST["tags"]);
-	// 	$userid = mysqli_real_escape_string($conn, $_SESSION["id"]);
-	// 	$title = mysqli_real_escape_string($conn, $_POST["title"]);
-	// 	$description = mysqli_real_escape_string($conn, $_POST["description"]);
-	// 	$content = mysqli_real_escape_string($conn, $_POST["content"]);
-	// 	$tags = mysqli_real_escape_string($conn, $_POST["tags"]);
-	// 	postArticle($userid, $title, $description, $content, $tags);
-	// }
-
 ?>
 
 
@@ -50,50 +40,12 @@
 					<img src="media/images/square_logo.png">
 				</div>
 			</div>
-			<div class="col-8 no-shadow abc" id="articles-container">
-				<div class="add-btn-container">
+			<div class="col-8 d-flex flex-column align-items-center no-shadow abc" id="articles-container">
+				<div class="toolbar">
 					<button id="add-article">Add Article</button>
+					<!-- <button id="add-article">Add Article</button> -->
 				</div>
 
-<!-- 				
-				<div class="container-fluid">
-					<div class="row">
-
-						<div class="col-4 mb-3">
-							<div class="card">
-								<div class="card-header d-flex">
-									<div class="h5">Article Title</div>
-								</div>
-								<div class="card-body">
-									<div class="card-text">Article Summary</div>
-								</div>	
-							</div>
-						</div>
-						<div class="col-4 mb-3">
-							<div class="card">
-								<div class="card-header d-flex">
-									<div class="h5">Article Title</div>
-								</div>
-								<div class="card-body">
-									<div class="card-text">Article Summary</div>
-								</div>	
-							</div>
-						</div>
-						<div class="col-4 mb-3">
-							<div class="card">
-								<div class="card-header d-flex">
-									<div class="h5">Article Title</div>
-								</div>
-								<div class="card-body">
-									<div class="card-text">Article Summary</div>
-								</div>	
-							</div>
-						</div>
-
-					</div>
-				</div> -->
-
-				
 			</div>
 			<div class="col-2 no-pad shadow-to-right">
 				<div class="profile">

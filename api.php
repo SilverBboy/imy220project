@@ -30,9 +30,9 @@ function postArticle($userid, $title, $description, $content, $tags){
     $result = mysqli_query($conn, $sql_query);
 
     if ($result) {
-        echo "Article inserted successfully!";
+        // echo "Article inserted successfully!";
     } else {
-        echo "Error: " . mysqli_error($conn);
+        // echo "Error: " . mysqli_error($conn);
     }
 }
 
@@ -49,8 +49,8 @@ if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])){
 if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["upload"])){
 
     $mediaDir = "media/gallery/";
-    echo $_FILES["article-image"]["name"];
-    $uploadFile = mediaDir . basename($_FILES["article-image"]["name"]);
+    $uploadFile = $mediaDir . basename($_FILES["article-image"]["name"]);
+    // echo $uploadFile;
 
     // echo ($_POST["title"] . $_POST["description"] . $_POST["content"] . $_POST["tags"]);
     $userid = mysqli_real_escape_string($conn, $_SESSION["id"]);

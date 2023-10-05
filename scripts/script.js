@@ -36,8 +36,7 @@ scrollElementsControl();
 
 
 window.addEventListener("click", () => {
-    // console.log($(document.activeElement).parent());
-    //if current active element is focus
+
 
     let inputEl = document.activeElement;
     if (inputsArray.includes(document.activeElement)){
@@ -49,7 +48,6 @@ window.addEventListener("click", () => {
     }
     $(document.activeElement).parent().addClass(" focused");
 
-    // document.activeElement.("input-container")){
     
 })
 
