@@ -139,6 +139,14 @@ body{
 
 .article-card{
     height: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.article-card:hover {
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.15);
+    transform: scale(1.005) translate(1px, -2px) rotate(-0.2deg);
 }
 
 .no-pad{

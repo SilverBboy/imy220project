@@ -35,7 +35,7 @@
     }
     
     if(isset($_POST['register'])){
-        $conn =  mysqli_connect($host, $uname, $pass, $db_name);
+        // $conn =  mysqli_connect($host, $uname, $pass, $db_name);
         $email = $_POST['email'];
         $password = $_POST['password'];
         $name = $_POST['name'];
@@ -46,6 +46,7 @@
 
         if(mysqli_query($conn, $sql_query)){
             echo "New record created successfully";
+            header("location: index.html");
         } else {
             echo "Error: " . $sql_query . "<br>" . mysqli_error($conn);
             echo "Error: could not create new record";

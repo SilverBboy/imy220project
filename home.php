@@ -20,7 +20,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>IMY 220 - Assignment 2</title>
+	<title>Auteur</title>
 	<meta charset="utf-8" />	
 	<link href="css/style.css" rel="stylesheet"/>
 	<link href="css/style-home.css" rel="stylesheet"/>
@@ -31,6 +31,8 @@
 		href="https://fonts.googleapis.com/css2?family=Jost:wght@300&family=Montserrat:wght@300&family=Poppins:wght@100&display=swap"
 		rel="stylesheet">
 	<link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="media/images/favicon.png">
+
 </head>
 <body>
 	<div class="container-fluid profile-bg">
