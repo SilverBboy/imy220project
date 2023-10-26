@@ -27,7 +27,7 @@
         echo $row['email'];
         if($row['email'] == $email && $row['password'] == $password){
             echo "Login successful";
-            header("location: home.php");
+            header("location: home.php?fromRedirect=true");
             exit();
         } else {
             echo "Login failed";
@@ -35,7 +35,8 @@
     }
     
     if(isset($_POST['register'])){
-        // $conn =  mysqli_connect($host, $uname, $pass, $db_name);
+
+
         $email = $_POST['email'];
         $password = $_POST['password'];
         $name = $_POST['name'];
@@ -45,8 +46,13 @@
         $sql_query = "INSERT INTO users (name, surname, email, dob, password) VALUES ('$name', '$surname', '$email', '$dob', '$password')";
 
         if(mysqli_query($conn, $sql_query)){
+            session_start();
             echo "New record created successfully";
-            header("location: index.html");
+            $_SESSION["email"] = $email;
+            $_SESSION["password"] = $password;
+            $_SESSION["id"] = $name;
+            header("location: home.php?fromRedirect=true");
+            exit();
         } else {
             echo "Error: " . $sql_query . "<br>" . mysqli_error($conn);
             echo "Error: could not create new record";
@@ -54,3 +60,13 @@
     }
         
 ?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Process</title>
+    </head>
+    <body>
+        <script src="scripts/setCookie.js"></script>
+    </body>
+</html>

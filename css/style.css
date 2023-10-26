@@ -162,6 +162,8 @@ form{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    margin: 20px 0 20px 0;
 }
 
 .form-input{
@@ -213,19 +215,16 @@ input:focus{
 
 button{
     border: none;
-    width: 200px;
-    max-height: 50px;
-    /* background-color: #80002010; */
+    max-height: 35px;
     background-color: #d00070;
     color: #fff;
-    padding: 10px 20px 10px 20px;
+    padding: 0 20px 0 20px;
     border-radius: 5px;
     font-size: 1.2em;
     font-family: 'Jost', sans-serif;
-    cursor: pointer;
-    clip-path: polygon(50% 0%, 85% 0%, 100% 50%, 85% 100%, 50% 100%, 15% 100%, 0% 50%, 15% 0%);
-    /* transition: all 0.5s ease; */
+    outline: none;
 }
+
 
 button:hover{
     background-color: #000;

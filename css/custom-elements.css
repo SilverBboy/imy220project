@@ -1,0 +1,43 @@
+.custom-button{
+    display: flex;
+    max-height: 35px;
+    /* background-color: blue; */
+}
+
+.custom-button:hover{
+    cursor: pointer;
+}
+
+.custom-button button:focus{
+    outline: none;
+}
+
+.custom-button:hover button{
+    cursor: pointer;
+    background-color: #000;
+}
+.custom-button:hover .triangle-left{
+    border-color: transparent #000 transparent transparent;
+}
+.custom-button:hover .triangle-right{
+    border-color: transparent transparent transparent #000;
+}
+
+.triangle-left,
+.triangle-right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.triangle-left {
+    border-width: 17px 25px 17px 0;
+    /* Adjust the values to change the size of the triangle */
+    border-color: transparent #d00070 transparent transparent;
+    /* Left pointing triangle color */
+}
+
+.triangle-right {
+    border-width: 17px 0 17px 25px;
+    border-color: transparent transparent transparent #d00070;
+}

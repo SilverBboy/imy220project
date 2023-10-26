@@ -24,6 +24,7 @@
 	<meta charset="utf-8" />	
 	<link href="css/style.css" rel="stylesheet"/>
 	<link href="css/style-home.css" rel="stylesheet"/>
+	<link href="css/custom-elements.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">	
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200&family=Montserrat:wght@300&family=Poppins:wght@100&display=swap"
 		rel="stylesheet">
@@ -43,11 +44,7 @@
 				</div>
 			</div>
 			<div class="col-8 d-flex flex-column align-items-center no-shadow abc" id="articles-container">
-				<div class="toolbar">
-					<button id="add-article">Add Article</button>
-					<!-- <button id="add-article">Add Article</button> -->
-				</div>
-
+				<!-- Add toolbar here -->
 			</div>
 			<div class="col-2 no-pad shadow-to-right">
 				<div class="profile">
@@ -118,6 +115,7 @@
 		</div>
 	</div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-	<script src="scripts/home-script.js"></script>
+	<script src="scripts/custom-elements-script.js"></script>
+	<script type="module" src="scripts/home-script.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@ function getSessionUID(){
 
 function getArticles($userid) {
     $conn = DB::getDbConn();
-    $sql_query = "SELECT * FROM articles WHERE userid = $userid";
+    $sql_query = "SELECT id, userid, title, image, summary, date, hashtags FROM articles WHERE userid = $userid";
     $result = mysqli_query($conn, $sql_query);
     $rows = [];
 
@@ -22,11 +22,24 @@ function getArticles($userid) {
     return json_encode($rows);
 }
 
+function getArticleContent($id, $userid) {
+    $conn = DB::getDbConn();
+    $query = "
+        SELECT articles.content, articles.title, articles.image, articles.summary, articles.date, articles.hashtags, users.name, users.surname
+        FROM articles
+        JOIN users ON articles.userid = users.id
+        WHERE articles.id = $id;
+    ";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    // echo json_encode($row);
+    return json_encode($row);
+}
 
 function postArticle($userid, $title, $image, $description, $content, $tags){
     $conn = DB::getDbConn();
 
-    $sql_query = "INSERT INTO articles (userid, title, image, summary, hashtags) VALUES('$userid', '$title', '$image', '$description', '$tags')";
+    $sql_query = "INSERT INTO articles (userid, title, image, summary, content, hashtags) VALUES('$userid', '$title', '$image', '$description', '$content', '$tags')";
     $result = mysqli_query($conn, $sql_query);
 
     if ($result) {
@@ -35,6 +48,7 @@ function postArticle($userid, $title, $image, $description, $content, $tags){
         // echo "Error: " . mysqli_error($conn);
     }
 }
+
 
 if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["getID"])){
     echo getSessionUID();
@@ -63,6 +77,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["upload"])){
     } else {
         echo "Error moving uploaded file to destination.";
     }
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["userId"]) && isset($_GET["articleId"])) {
+    $articleid = $_GET["articleId"];
+    $userid = $_GET["userId"];
+    $articleContent = getArticleContent($articleid, $userid);
+    echo $articleContent;
 }
 
 

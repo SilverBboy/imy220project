@@ -66,9 +66,9 @@ body{
     width: 100%;
 }
 
-#articles-container{
+/* #articles-container{
     
-}
+} */
 
 .toolbar{
     width: 64%;
@@ -121,10 +121,10 @@ body{
     margin: 40px;
 }
 
-#article-form-container div{
-    /* display: block; */
-    /* max-height: 300px; */
-}
+/* #article-form-container div{
+    display: block;
+    max-height: 300px;
+} */
 
 #article-form{
     width: 100%;

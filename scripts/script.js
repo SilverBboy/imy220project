@@ -64,3 +64,7 @@ switcher.addEventListener("click", () => {
     }
 });
 
+$(() => {
+    $("#login-form").append(button("Login", "login-button", "submit", "login"));
+    $("#register-form").append(button("Register", "register-button", "submit", "register"));
+})
