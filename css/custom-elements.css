@@ -2,6 +2,22 @@
     display: flex;
     max-height: 35px;
     /* background-color: blue; */
+    transition: all 0.2s ease-in-out;
+}
+
+.toolbar {
+    width: 64%;
+    top: 0px;
+    max-height: 100px;
+    /* display: flex;
+    justify-content: space-around; */
+    /* margin: 20px; */
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0 5px 10px -5px#d00070;
+    position: fixed;
+    z-index: 10;
+    padding: 0 10px 0 10px;
 }
 
 .custom-button:hover{
@@ -28,16 +44,88 @@
     width: 0;
     height: 0;
     border-style: solid;
+    transition: all 0.2s ease-in-out;
 }
 
 .triangle-left {
     border-width: 17px 25px 17px 0;
-    /* Adjust the values to change the size of the triangle */
     border-color: transparent #d00070 transparent transparent;
-    /* Left pointing triangle color */
+    transition: all 0.2s ease-in-out;
 }
 
 .triangle-right {
     border-width: 17px 0 17px 25px;
     border-color: transparent transparent transparent #d00070;
+    transition: all 0.2s ease-in-out;
+}
+
+.icon-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #d00070;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px 0 10px;
+    font-size: 1.5em;
+    border-radius: 2px;
+    transition: all 0.2s ease-in-out;
+}
+
+.icon-button:hover{
+    /* font-size: 1.7em; */
+    transform: scale(1.1);
+    color:#000;
+}
+
+.toolbar-flex{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin: 0 10px 0 10px;
+}
+
+.j-start{
+    justify-content: flex-start;
+}
+.j-center{
+    justify-content: center;
+}
+.j-end{
+    justify-content: flex-end;
+}
+
+.progress-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    margin: 10px 0 0 0;
+    bottom: 0;
+    background-color: #ffe8f4;
+    border-radius: 70px;
+}
+
+.progress-marker {
+    left: 0;
+    width: 0%;
+    height: 5px;
+    border-radius: 70px;
+    background-color: #d00070;
+    transition: width 0.08s ease-in-out;
+    
+}
+
+.marker-tip{
+    width: 5px;
+    height: 5px;
+    background-color: #d00070;
+    box-shadow: 0 0 5px 2px#d00070;
+}
+
+.buttons-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0;
 }

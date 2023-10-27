@@ -70,20 +70,6 @@ body{
     
 } */
 
-.toolbar{
-    width: 64%;
-    top: 0px;
-    max-height: 100px;
-    display: flex;
-    justify-content: center;
-    /* margin: 20px; */
-    background-color: #fff;
-    border-radius: 7px;
-    box-shadow: 0 5px 10px -5px#d00070;
-    position: fixed;
-    z-index: 10;
-    padding: 10px;
-}
 
 #articles-container{
     padding-top: 80px;
@@ -182,4 +168,18 @@ body{
     font-size: 16px;
     /* line-height: 1.5; */
     resize: none;
+}
+
+.reading-article-image{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+
+}
+.reading-article-image > img {
+    width: 50%;
+    height: auto;
 }

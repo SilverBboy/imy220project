@@ -9,9 +9,21 @@ function getSessionUID(){
     return json_encode($_SESSION["id"]);
 }
 
+function getUserDetails($userid) {
+    $conn = DB::getDbConn();
+    $sql_query = "SELECT name, surname, email, dob FROM users WHERE id = $userid";
+    $result = mysqli_query($conn, $sql_query);
+    $row = mysqli_fetch_array($result);
+    return json_encode($row);
+}
+
 function getArticles($userid) {
     $conn = DB::getDbConn();
-    $sql_query = "SELECT id, userid, title, image, summary, date, hashtags FROM articles WHERE userid = $userid";
+    if ($userid == -1) {
+        $sql_query = "SELECT id, userid, title, image, summary, date, hashtags FROM articles";
+    } else {
+        $sql_query = "SELECT id, userid, title, image, summary, date, hashtags FROM articles WHERE userid = $userid";
+    }
     $result = mysqli_query($conn, $sql_query);
     $rows = [];
 
@@ -49,13 +61,45 @@ function postArticle($userid, $title, $image, $description, $content, $tags){
     }
 }
 
+function deleteFromDatabase($id, $dbTable) {
+    $conn = DB::getDbConn();
+
+    if ($dbTable == "users") {
+        // delete the user, all their articles, and associated reviews
+        $query = "DELETE users, articles, reviews FROM users
+                  LEFT JOIN articles ON users.id = articles.userid
+                  LEFT JOIN reviews ON articles.id = reviews.articleid
+                  WHERE users.id = $id";
+    } else if ($dbTable == "articles") {
+        // delete the article and associated reviews
+        $query = "DELETE articles, reviews FROM articles
+                  LEFT JOIN reviews ON articles.id = reviews.articleid
+                  WHERE articles.id = $id";
+    } else {
+        // delete the review
+        $query = "DELETE FROM $dbTable WHERE article_id = $id";
+    }
+
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        echo "Records deleted successfully";
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
 
 if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["getID"])){
     echo getSessionUID();
 }
 
-if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])){
-    $userid = $_GET["id"];
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["userId"]) && isset($_GET["getUserDetails"])) {
+    $userId = $_GET["userId"];
+    $userDetails = getUserDetails($userId);
+    echo $userDetails;
+}
+
+if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["userId"]) && isset($_GET["getArticles"])){
+    $userid = $_GET["userId"];
     $articles = getArticles($userid);
     echo $articles;
 }
@@ -79,12 +123,17 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["upload"])){
     }
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["userId"]) && isset($_GET["articleId"])) {
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["userId"]) && isset($_GET["articleId"]) && isset($_GET["getArticleContent"])) {
     $articleid = $_GET["articleId"];
     $userid = $_GET["userId"];
     $articleContent = getArticleContent($articleid, $userid);
     echo $articleContent;
 }
 
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["id"]) && isset($_POST["dbTable"]) && isset($_POST["delete"])) {
+    $id = $_POST["id"];
+    $dbTable = $_POST["dbTable"];
+    deleteFromDatabase($id, $dbTable);
+}
 
 ?>

@@ -223,6 +223,7 @@ button{
     font-size: 1.2em;
     font-family: 'Jost', sans-serif;
     outline: none;
+    transition: all 0.2s ease-in-out;
 }
 
 

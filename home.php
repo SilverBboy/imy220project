@@ -64,9 +64,8 @@
 		<div id="article-form-content">
 			<div class="col-sm-6 col-12 mt-sm-0">
 				<div class="card">
-					<div class="card-header d-flex justify-content-between">
+					<div id="form-header" class="card-header d-flex justify-content-between">
 						<div class="h5">New Article</div>
-						<div class="h5" id="close-form"><i class="lni lni-close"></i></div>
 					</div>
 					<div class="card-body">
 						<form id="article-form" method="POST" action="home.php" enctype="multipart/form-data">
@@ -107,7 +106,7 @@
 									</div>
 								</div>
 							</div>
-							<button type="submit" name="upload">Submit</button>
+							<!-- <button type="submit" name="upload">Submit</button> -->
 						</form>
 					</div>
 				</div>
