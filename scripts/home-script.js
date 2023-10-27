@@ -59,10 +59,6 @@ const showImagePreview = (input) => {
     }
 }
 
-const progressMarker = (progress) => {
-    return marker;
-}
-
 const createArticleCards = (articles) => {
     $("#articles-container").empty();
     $("#articles-container").append(toolbar(button("Add Article", "add-article")));
@@ -124,12 +120,22 @@ const readArticle = (articleId, userId) => {
             button("Add Article", "add-article")
         ],
         [
-            button("edit_i", "edit", "button", "edit"),
             () =>{
                 if (getCookie("userId") == userId) {
-                    return button("delete_i", "delete", "button", "delete").on("click", () => {
-                        deleteData(articleId, "articles");
-                    })
+                    return(
+                        button("edit_i", "edit", "button", "edit").on("click", () => {
+                            editData();
+                        })
+                    )
+                }
+            },
+            () =>{
+                if (getCookie("userId") == userId) {
+                    return(
+                        button("delete_i", "delete", "button", "delete").on("click", () => {
+                            deleteData(articleId, "articles");
+                        })
+                    )
                 }
             }
         ]
@@ -147,17 +153,17 @@ const readArticle = (articleId, userId) => {
             const row = $("<div>").addClass("row");
             articleContainer.append(row);
 
-            const card = $("<div>").addClass("col-12 mb-8").append(
-                $("<h1>").addClass("mb-4").html(articleContent.title),
-                $("<div>").html(articleContent.summary),
-                $("<div>").addClass("d-flex justify-between").append(
+            const card = $("<div>").attr({"article-id": articleId}).addClass("col-12 mb-8").append(
+                $("<h1>").addClass("mb-4").attr("editable", true).attr("name", "title:input").html(articleContent.title),
+                $("<div>").attr("editable", true).attr("name", "summary:input").html(articleContent.summary),
+                $("<div>").addClass("d-flex justify-content-between ").append(
                     $("<p>").addClass("text-muted").html(`By ${userDetails.name} ${userDetails.surname}`),
                     $("<p>").addClass("text-muted").html(`On ${normaliseDate(articleContent.date)}`),
                 ),
-                $("<div>").addClass("reading-article-image").append(
-                    $("<img>").addClass("card-img-top").attr("src", "./media/gallery/" + articleContent.image).attr("alt", "Article Image"),
+                $("<div>").addClass("reading-article-image").attr("editable", true).append(
+                    $("<img>").addClass("card-img-top").attr("src", "./media/gallery/" + articleContent.image).attr("name", "image:input").attr("alt", "Article Image"),
                 ),
-                $("<div>").addClass("article-content").append(
+                $("<div>").addClass("article-content").attr("editable", true).attr("name", "content:textarea").append(
                     $("<p>").html(articleContent.content)
                 )
             );

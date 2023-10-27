@@ -88,6 +88,31 @@ function deleteFromDatabase($id, $dbTable) {
     }
 }
 
+function update($id, $dbTable, $data){
+    $data = json_decode($data);
+    $conn = DB::getDbConn();
+    $query = "UPDATE $dbTable SET ";
+    $params = array();
+    foreach ($data as $key => $value) {
+        //sanitize key and value
+        $key = mysqli_real_escape_string($conn, $key);
+        $value = mysqli_real_escape_string($conn, $value);
+        $query .= "$key = ?, ";
+        $params[] = $value;
+    }
+    $query = substr($query, 0, -2);
+    $query .= " WHERE id = ?";
+    $params[] = $id;
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, str_repeat("s", count($params)), ...$params);
+    $result = mysqli_stmt_execute($stmt);
+    if ($result) {
+        echo "Records updated successfully";
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+
 if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["getID"])){
     echo getSessionUID();
 }
@@ -135,5 +160,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["id"]) && isset($_POST
     $dbTable = $_POST["dbTable"];
     deleteFromDatabase($id, $dbTable);
 }
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["id"]) && isset($_POST["dbTable"]) && isset($_POST["update"])) {
+    $id = $_POST["id"];
+    $dbTable = $_POST["dbTable"];
+    $data = $_POST["data"];
+    update($id, $dbTable, $data);
+}
+    
 
 ?>

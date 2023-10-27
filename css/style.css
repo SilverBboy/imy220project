@@ -182,55 +182,6 @@ form{
 }
 
 
-.input-container{
-    display: flex;
-    justify-content: space-around;
-    margin: 0px 20px 0 20px;
-    color: #c7c7c7;
-}
-
-input{
-    border: none;
-    background-color: rgba(255, 255, 255, 0);
-    border-bottom: 1px solid #c7c7c7;
-    text-align: center;
-}
-
-input:focus{
-    outline: none;
-    border-bottom: 1px solid #d00070;
-}
-
-
-.focused{
-    color: #d00070;
-    border-bottom: #d00070;
-}
-
-.form-input i[class*="chevron"] {
-    margin: 5% 0px 0 0px;
-    font-size: 1.5em;
-    /* color: #707070; */
-}
-
-button{
-    border: none;
-    max-height: 35px;
-    background-color: #d00070;
-    color: #fff;
-    padding: 0 20px 0 20px;
-    border-radius: 5px;
-    font-size: 1.2em;
-    font-family: 'Jost', sans-serif;
-    outline: none;
-    transition: all 0.2s ease-in-out;
-}
-
-
-button:hover{
-    background-color: #000;
-}
-
 .arrow-hover-effect{
     transition: all 0.5s ease;
     background-color: #d00070;

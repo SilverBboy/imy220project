@@ -3,7 +3,6 @@ const welcome_text = document.getElementById("welcome_text");
 const logo = document.getElementById("website_name").getElementsByTagName("h1")[0];
 const scrollPos = document.getElementsByClassName("scroll_snap");
 const switcher = document.getElementsByClassName("switcher")[0];
-const inputsArray = [... document.getElementsByTagName("input")];
 
 const scrollElementsControl = () => {
     let scroll = window.scrollY;
@@ -37,18 +36,23 @@ scrollElementsControl();
 
 window.addEventListener("click", () => {
 
+    const inputsArray = [...$("input")];
 
-    let inputEl = document.activeElement;
-    if (inputsArray.includes(document.activeElement)){
-        inputEl.parentElement.classList.add("focused");
-        inputEl.addEventListener("blur", () => {
-            inputEl.parentElement.classList.remove("focused");
-        })
-            
-    }
-    $(document.activeElement).parent().addClass(" focused");
+    $(document).on("click", "input", function () {
+        console.log("click");
 
-    
+        let inputEl = $(this)[0];
+        if (inputsArray.includes(inputEl)) {
+            $(inputEl).siblings().addClass("focus-custom-input");
+            $(inputEl).on("blur", function () {
+                $(inputEl).siblings().removeClass("focus-custom-input");
+            });
+        }
+        else {
+            $(inputEl).parent().removeClass("focus-custom-input");
+        }
+
+    });
 })
 
 switcher.addEventListener("click", () => {
