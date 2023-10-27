@@ -4,6 +4,7 @@ const icons = {
     edit_i: $("<i>").addClass("lni lni-pencil"),
     backArrow_i: $("<i>").addClass("lni lni-chevron-left"),
     close_i: $("<i>").addClass("lni lni-close"),
+    filter_i: $("<i>").addClass("lni lni-funnel"),
 }
 
 
@@ -108,7 +109,7 @@ const deleteData = (id, dbTable) => {
     }).then((result) => {
         console.log(result);
         goBack();
-        // location.reload();
+        location.reload();
     });
 }
 
@@ -169,8 +170,8 @@ const editData = () => {
                 }
             }).then((result) => {
                 console.log(result);
-                // goBack();
-                // location.reload();
+                goBack();
+                location.reload();
             });
         }),
     )

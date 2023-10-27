@@ -94,7 +94,6 @@ function update($id, $dbTable, $data){
     $query = "UPDATE $dbTable SET ";
     $params = array();
     foreach ($data as $key => $value) {
-        //sanitize key and value
         $key = mysqli_real_escape_string($conn, $key);
         $value = mysqli_real_escape_string($conn, $value);
         $query .= "$key = ?, ";
@@ -133,7 +132,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["upload"])){
     $mediaDir = "./media/gallery/";
     $filename = basename($_FILES["article-image"]["tmp_name"]);
     $uploadFile = $mediaDir . $filename;
-    // echo $uploadFile;
     if(move_uploaded_file($_FILES["article-image"]["tmp_name"], $uploadFile)){
 
         $userid = mysqli_real_escape_string($conn, $_SESSION["id"]);
